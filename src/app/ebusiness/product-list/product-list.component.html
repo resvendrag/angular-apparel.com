@@ -1,0 +1,47 @@
+<p-dataView [value]="productList" [paginator]="true" [rows]="20" paginatorPosition="bottom"
+[sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+<!-- <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="ui-g">
+                <div class="ui-md-8"></div>
+                <div class="ui-g-6 ui-md-4" style="text-align:right">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </div>
+        </div>
+    </p-header>     -->
+
+    <ng-template let-product pTemplate="gridItem">
+            <div style="padding:.5em" class="ui-g-12 ui-md-3">
+                <p-panel [header]="product.name" class="name-font" [style]="{'text-align':'center'}">
+                    <img (click)="selectAProduct(product)" src="assets/images/{{product.images[0]}}.jpeg" width="100">
+                    <div class="product-detail">{{product.price}}$</div>
+                    <hr class="ui-widget-content" style="border-top:0">
+                    <button pButton type="button" label="Add to cart" (click)="addItemToCart(product)" class="ui-button-raised ui-button-success"></button>
+                </p-panel>
+            </div>
+    </ng-template>
+</p-dataView>
+
+<p-dialog header="Product Details" [(visible)]="displayDialog" 
+[responsive]="true" showEffect="fade" [modal]="true" width="225" 
+(onAfterHide)="onDialogHide()">
+        <div class="ui-g" *ngIf="selectedProduct">
+            <div class="ui-g-12" style="text-align:center">
+                <img src="assets/images/{{selectedProduct.images[0]}}.jpeg">
+            </div>
+            <div class="ui-g-4">Name: </div>
+            <div class="ui-g-8">{{selectedProduct.name}}</div>
+    
+            <div class="ui-g-4">Brand: </div>
+            <div class="ui-g-8">{{selectedProduct.brand}}</div>
+    
+            <div class="ui-g-4">Category: </div>
+            <div class="ui-g-8">{{selectedProduct.category}}</div>
+    
+            <div class="ui-g-4">Price: </div>
+            <div class="ui-g-8">${{selectedProduct.price}}</div>
+        </div>
+    </p-dialog>
+
+    <p-toast [style]="{marginTop: '80px'}" position="bottom-left"></p-toast>

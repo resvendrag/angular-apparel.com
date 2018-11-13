@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <p style="margin-bottom: 0; font-weight: 500">CART</p>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div *ngIf="!cart">
+    <label>No items in cart</label>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg">
+      </div>
+      <div class="col-lg">
+        <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+      </div>
+      <div class="col-lg remove-padding">
+          <p-button icon="pi pi-check" [disabled]="true" label="Checkout" *ngIf="!cart"></p-button>
+          <p-button icon="pi pi-check"  label="Checkout" *ngIf="cart"></p-button>
+        </div>
+    </div>
+  </div>
+</div>
+

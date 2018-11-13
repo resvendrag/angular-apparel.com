@@ -1,0 +1,37 @@
+<div style="padding: 1.5em" class="row box-border-fill">
+  <div class="col-3">
+    <h3>APPAREL store</h3>
+  </div>
+  <div class="col-8">
+      <div class="ui-inputgroup">
+          <button pButton type="button" (click)="plainSearch()" label="Search"></button>
+          <input style="width: 65%" type="text" [(ngModel)]="searchQuery" (keyup.enter)="plainSearch(searchQuery)" pInputText placeholder="Product name">
+      </div>
+  </div>
+  <div class="col-1">
+    <p-button icon="pi pi-user" *ngIf="showloginbutton" label="Login" (click)="open()"></p-button>
+    <p-button  label="Cart" (click)="openCartModal()"></p-button>
+  </div>
+</div>
+
+<div style="padding: 1.5em; padding-top: 0px" class="row">
+  <div class="col-12">
+      <p-menubar (click)="onClickItem($event)" [model]="items">
+      </p-menubar>
+  </div> 
+</div>
+
+<div style="padding: 1.5em; padding-top: 0px" class="row">
+  <div class="col-2">
+      <p-panelMenu [model]="sideItems" [style]="{'width':'200px'}"></p-panelMenu>
+  </div>
+  <div class="col-10">
+    <app-product-list [productList]="products" [userName]="username"></app-product-list>
+  </div>
+</div>
+
+
+
+
+
+
